@@ -192,6 +192,7 @@ function findFirstSingleChar(str) {
   return null;
 }
 
+
 /**
  * Returns the string representation of math interval,
  * specified by two points and include / exclude flags.
@@ -214,8 +215,22 @@ function findFirstSingleChar(str) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  let output = '';
+  if (isStartIncluded === true) {
+    output += '[';
+  } else { output += '('; }
+  if (a > b) {
+    output += `${b}`;
+  } else { output += `${a}`; }
+  output += ', ';
+  if (a > b) {
+    output += `${a}`;
+  } else { output += `${b}`; }
+  if (isEndIncluded === true) {
+    output += ']';
+  } else { output += ')'; }
+  return output;
 }
 
 
@@ -231,8 +246,8 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 
@@ -248,8 +263,8 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  return Number(num.toString().split('').reverse().join(''));
 }
 
 
